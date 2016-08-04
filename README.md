@@ -32,7 +32,7 @@ $ appframer -i /path/to/screens.json
 ```
 FramedAppScreens - 03-08-2016 AT 18.40
 Using splash.jpg, timeline.jpg and profile.jpg as examples of screenshots listed in screens.json
-The generated out folder will look like this:
+The generated output folder will look like this:
 
 │   ├── 3.5
 │   │   └── splash.jpg
