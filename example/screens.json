@@ -2,35 +2,35 @@
     "device_type": "iOS",
     "screens": [
         {
-            "location": "Live Video.jpeg",
+            "file_path": "Live Video.jpeg",
             "title": "Live Video",
             "description": "Rain in Spain falls mainly in the plain",
             "title_color": "black",
             "description_color": "red"
         },
         {
-            "location": "Profile.jpeg",
+            "file_path": "Profile.jpeg",
             "title": "Profile",
             "description": "Rain in Spain falls mainly in the plain",
             "title_color": "white",
             "description_color": "black"
         },
         {
-            "location": "Search.jpeg",
+            "file_path": "Search.jpeg",
             "title": "Search",
             "description": "Rain in Spain falls mainly in the plain",
             "title_color": "white",
             "description_color": "black"
         },
         {
-            "location": "Status Update.jpeg",
+            "file_path": "Status Update.jpeg",
             "title": "Status Update",
             "description": "Rain in Spain falls mainly in the plain",
             "title_color": "black",
             "description_color": "black"
         },
         {
-            "location": "Timeline.jpeg",
+            "file_path": "Timeline.jpeg",
             "title": "Timeline",
             "description": "Rain in Spain falls mainly in the plain",
             "title_color": "white",

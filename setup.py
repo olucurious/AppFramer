@@ -1,9 +1,9 @@
 from setuptools import setup
 import sys, os
 
-__url__ = 'https://github.com/olucurious/pyfcm'
+__url__ = 'https://github.com/olucurious/AppFramer'
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 if sys.argv[-1] == 'publish':
     os.system("git tag -a %s -m 'v%s'" % (__version__, __version__))
@@ -14,7 +14,7 @@ if sys.argv[-1] == 'publish':
 setup(
     name="appframer",
     version=__version__,
-    description="AppFramer helps to reduce the pain of putting your app screenshots in various device frames.",
+    description="AppFramer helps to put your app screenshots in beautiful device frames with annotations by running a simple command.",
     url=__url__,
     author="Emmanuel Adegbite",
     author_email="olucurious@gmail.com",

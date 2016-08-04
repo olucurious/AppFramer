@@ -13,9 +13,8 @@ import string
 import sys
 import argparse
 from time import strftime
-import six
 import inspect
-
+from six.moves import getcwd
 """
 The following resolutions are acceptable to iTunes connect:
 
@@ -43,8 +42,7 @@ iPad Pro
 2048 x 2732
 """
 
-OUTPUT_DIR = os.getcwd() + '/FramedAppScreens - %s/' % strftime("%d-%m-%Y AT %H.%M")
-
+OUTPUT_DIR = getcwd() + '/FramedAppScreens - %s/' % strftime("%d-%m-%Y AT %H.%M")
 
 def get_script_dir(follow_symlinks=True):
     if getattr(sys, 'frozen', False):  # py2exe, PyInstaller, cx_Freeze
@@ -67,7 +65,7 @@ class FrameScreenshots:
         self.desc_color = (desc_color if desc_color else (255, 255, 255))
         # Loading Fonts...
         self.title_font = ImageFont.truetype(get_script_dir() + "/fonts/Champagne & Limousines Bold.ttf", 120)
-        self.desc_font = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/Arial.ttf', 70)
+        self.desc_font = ImageFont.truetype(get_script_dir() + '/fonts/ufonts.com_arial-ce.ttf', 70)
 
     def generate(self):
         screen_sizes = dict()
@@ -83,7 +81,7 @@ class FrameScreenshots:
 
     def process_iphone(self, dim, width, height):
         scrshot2 = self.screenshot_image.resize((1536, 2726), PIL.Image.ANTIALIAS)
-        final_version = scrshot2.filter(ImageFilter.GaussianBlur(radius=8))
+        final_version = scrshot2.filter(ImageFilter.GaussianBlur(radius=12))
         self.set_text(final_version, self.desc_text, self.desc_font, 'desc')
         self.set_text(final_version, self.title_text, self.title_font, 'title')
         # ------------------
