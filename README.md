@@ -16,7 +16,6 @@ $ pip install appframer
 ```sh
 $ appframer -i /path/to/screens.json
 ```
-```
 
 ##Options
 `appframer [-h] -i INPUT`
@@ -25,14 +24,15 @@ $ appframer -i /path/to/screens.json
 	-i --input				path to data.json file that describes the screenshots to put in device frame
 
 ###Example
-
-`appframer -i /path/to/screens.json
+```sh
+$ appframer -i /path/to/screens.json
+```
 
 ###After
 ```
 FramedAppScreens - 03-08-2016 AT 18.40
 Using splash.jpg, timeline.jpg and profile.jpg as examples of screenshots listed in screens.json
-The generated out folder will look like this:
+The generated output folder will look like this:
 
 │   ├── 3.5
 │   │   └── splash.jpg
@@ -59,7 +59,7 @@ The generated out folder will look like this:
 ###screens.json example
 ```
 Screens.json is obviously a json file format
-For iOS, take the screenshots you want to use on iphone6s preferably
+For iOS, take the screenshots you want to use on iPhone6s preferably because of the high resolution
 and list them in your screens.json and appframer will take those screenshots and generate
 the screenshots framed in different devices in the dimensions needed for iTunesConnect submission
 
