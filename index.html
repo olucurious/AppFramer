@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Appframer by olucurious</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Appframer</h1>
+      <h2 class="project-tagline">AppFramer helps to put your app screenshots in various device frames and dimensions needed for iTunesConnect submission.</h2>
+      <a href="https://github.com/olucurious/AppFramer" class="btn">View on GitHub</a>
+      <a href="https://github.com/olucurious/AppFramer/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/olucurious/AppFramer/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="appframer" class="anchor" href="#appframer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AppFramer</h1>
+
+<p>AppFramer helps to put your app screenshots in beautiful device frames with annotations by running a simple command.
+Quickly put your screenshots into the various device frames needed for iTunesConnect submission.</p>
+
+<p><img src="https://raw.githubusercontent.com/olucurious/appframer/develop/example/Banner.jpg" alt="Banner of Sample Generated Device Frames"></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>$ pip install appframer</pre></div>
+
+<h4>
+<a id="compatibility" class="anchor" href="#compatibility" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibility</h4>
+
+<ul>
+<li>Linux / OSX</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<ul>
+<li>Go to the directory where you want the generate screen frames to be.</li>
+<li>Run the following command in your terminal.</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>$ appframer -i /path/to/screens.json</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h2>
+
+<p><code>appframer [-h] -i INPUT</code></p>
+
+<pre><code>-h --help               show help message and exit
+-i --input              path to data.json file that describes the screenshots to put in device frame
+</code></pre>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ appframer -i /path/to/screens.json</pre></div>
+
+<h3>
+<a id="after" class="anchor" href="#after" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>After</h3>
+
+<pre><code>FramedAppScreens - 03-08-2016 AT 18.40
+Using splash.jpg, timeline.jpg and profile.jpg as examples of screenshots listed in screens.json
+The generated output folder will look like this:
+
+│   ├── 3.5
+│   │   └── splash.jpg
+│   │   ├── timeline.jpg
+|   |   ├── profile.jpg
+|   |
+│   ├── 4
+│   │   └── splash.jpg
+│   │   ├── timeline.jpg
+|   |   ├── profile.jpg
+|   |
+│   ├── 4.7
+│   │   └── splash.jpg
+│   │   ├── timeline.jpg
+|   |   ├── profile.jpg
+|   |
+│   ├── 5.5
+│   │   └── splash.jpg
+│   │   ├── timeline.jpg
+|   |   ├── profile.jpg
+
+</code></pre>
+
+<h3>
+<a id="screensjson-example" class="anchor" href="#screensjson-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>screens.json example</h3>
+
+<pre><code>Screens.json is obviously a json file format
+For iOS, take the screenshots you want to use on iPhone6s preferably because of the high resolution
+and list them in your screens.json and appframer will take those screenshots and generate
+the screenshots framed in different devices in the dimensions needed for iTunesConnect submission
+
+NOTE: In the screens.json example below, I'm assuming the screenshot images are in the same directory
+as the screens.json file itself and I'll be running the command from the same directory
+
+{
+    "device_type": "iOS",
+    "screens": [
+        {
+            "file_path": "Live Video.jpeg",
+            "title": "Live Video",
+            "description": "Rain in Spain falls mainly in the plain",
+            "title_color": "black",
+            "description_color": "red"
+        },
+        {
+            "file_path": "Profile.jpeg",
+            "title": "Profile",
+            "description": "Rain in Spain falls mainly in the plain",
+            "title_color": "white",
+            "description_color": "black"
+        },
+        {
+            "file_path": "Search.jpeg",
+            "title": "Search",
+            "description": "Rain in Spain falls mainly in the plain",
+            "title_color": "white",
+            "description_color": "black"
+        },
+        {
+            "file_path": "Status Update.jpeg",
+            "title": "Status Update",
+            "description": "Rain in Spain falls mainly in the plain",
+            "title_color": "black",
+            "description_color": "black"
+        },
+        {
+            "file_path": "Timeline.jpeg",
+            "title": "Timeline",
+            "description": "Rain in Spain falls mainly in the plain",
+            "title_color": "white",
+            "description_color": "black"
+        }
+    ]
+}
+
+</code></pre>
+
+<h1></h1>
+
+<h2>
+<a id="the-mit-license" class="anchor" href="#the-mit-license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The MIT License</h2>
+
+<blockquote>
+<p>Copyright (c) 2016 Emmanuel Adegbite <a href="http://github.com/olucurious">http://github.com/olucurious</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+</blockquote>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/olucurious/AppFramer">Appframer</a> is maintained by <a href="https://github.com/olucurious">olucurious</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
