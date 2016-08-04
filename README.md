@@ -2,6 +2,8 @@
 AppFramer helps to put your app screenshots in beautiful device frames with annotations by running a simple command.
 Quickly put your screenshots into the various device frames needed for iTunesConnect submission.
 
+![Image of Sample Generated Device Frames](https://raw.githubusercontent.com/olucurious/appframer/develop/example/Banner.jpg)
+
 ## Installation
 ```sh
 $ pip install appframer
