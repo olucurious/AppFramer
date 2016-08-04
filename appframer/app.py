@@ -120,8 +120,7 @@ class FrameScreenshots:
 
 def main():
     desc = 'AppFramer helps to reduce the pain of putting your app screenshots in the various device frames'
-    parser = argparse.ArgumentParser(prog='appframer',
-                                     description=desc)
+    parser = argparse.ArgumentParser(prog='appframer', description=desc)
     parser.add_argument('-i', '--input', type=str, help='Pass the input screens.json file location', required=True)
     # TODO - allow the user to specify output directory
     # parser.add_argument('-o', '--output', help='Directory to write the generated files', required=True)
