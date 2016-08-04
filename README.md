@@ -7,6 +7,10 @@ Quickly put your screenshots into the various device frames needed for iTunesCon
 ## Installation
 ```sh
 $ pip install appframer
+
+OR
+
+pip install git+https://github.com/olucurious/AppFramer.git
 ```
 #### Compatibility
 * Linux / OSX
