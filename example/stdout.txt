@@ -1,0 +1,33 @@
+Now processing 'Live Video' screen for 3.5 inches
+Now processing 'Live Video' screen for 5.5 inches
+Now processing 'Live Video' screen for 4.7 inches
+Now processing 'Live Video' screen for 4 inches
+Done with 'Live Video' screen
+------------------------------------------
+Now processing 'Profile' screen for 3.5 inches
+Now processing 'Profile' screen for 5.5 inches
+Now processing 'Profile' screen for 4.7 inches
+Now processing 'Profile' screen for 4 inches
+Done with 'Profile' screen
+------------------------------------------
+Now processing 'Search' screen for 3.5 inches
+Now processing 'Search' screen for 5.5 inches
+Now processing 'Search' screen for 4.7 inches
+Now processing 'Search' screen for 4 inches
+Done with 'Search' screen
+------------------------------------------
+Now processing 'Status Update' screen for 3.5 inches
+Now processing 'Status Update' screen for 5.5 inches
+Now processing 'Status Update' screen for 4.7 inches
+Now processing 'Status Update' screen for 4 inches
+Done with 'Status Update' screen
+------------------------------------------
+Now processing 'Timeline' screen for 3.5 inches
+Now processing 'Timeline' screen for 5.5 inches
+Now processing 'Timeline' screen for 4.7 inches
+Now processing 'Timeline' screen for 4 inches
+Done with 'Timeline' screen
+------------------------------------------
+------------------------------------------
+Screenshots device frame processing complete...
+Get the output at /Users/olucurious/Documents/Fbscr/FramedAppScreens - 04-08-2016 AT 08.21/
