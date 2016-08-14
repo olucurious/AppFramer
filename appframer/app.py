@@ -15,6 +15,7 @@ import argparse
 from time import strftime
 import inspect
 from six.moves import getcwd
+
 """
 The following resolutions are acceptable to iTunes connect:
 
@@ -44,6 +45,7 @@ iPad Pro
 
 OUTPUT_DIR = getcwd() + '/FramedAppScreens - %s/' % strftime("%d-%m-%Y AT %H.%M")
 
+
 def get_script_dir(follow_symlinks=True):
     if getattr(sys, 'frozen', False):  # py2exe, PyInstaller, cx_Freeze
         path = os.path.abspath(sys.executable)
@@ -55,17 +57,26 @@ def get_script_dir(follow_symlinks=True):
 
 
 class FrameScreenshots:
-    def __init__(self, screenshot_location, title_text, desc_text, title_color=None, desc_color=None):
+    def __init__(self, screenshot_location, title_text, desc_text, title_color=None, desc_color=None, bg_color=None):
         self.screenshot_location = screenshot_location
         self.title_text = title_text
         self.desc_text = desc_text
         # Opening the screen shot image file
         self.screenshot_image = Image.open(self.screenshot_location)
-        self.title_color = (title_color if title_color else (255, 255, 255))
-        self.desc_color = (desc_color if desc_color else (255, 255, 255))
+        self.title_color = (self.parse_color(title_color) if title_color else (255, 255, 255))
+        self.desc_color = (self.parse_color(desc_color) if desc_color else (255, 255, 255))
+        self.bg_color = (self.parse_color(bg_color) if bg_color else (3, 169, 244))
         # Loading Fonts...
         self.title_font = ImageFont.truetype(get_script_dir() + "/fonts/Champagne & Limousines Bold.ttf", 120)
         self.desc_font = ImageFont.truetype(get_script_dir() + '/fonts/ufonts.com_arial-ce.ttf', 70)
+
+    def parse_color(self, color_string):
+        if '(' and ')' and ',' in color_string:
+            color_list = color_string.strip('()').replace(' ', '').split(',')
+            return int(color_list[0]), int(color_list[1]), int(color_list[2])
+        else:
+            print color_string
+            return color_string
 
     def generate(self):
         screen_sizes = dict()
@@ -80,29 +91,31 @@ class FrameScreenshots:
         print("------------------------------------------")
 
     def process_iphone(self, dim, width, height):
-        scrshot2 = self.screenshot_image.resize((1536, 2726), PIL.Image.ANTIALIAS)
-        final_version = scrshot2.filter(ImageFilter.GaussianBlur(radius=12))
-        self.set_text(final_version, self.desc_text, self.desc_font, 'desc')
-        self.set_text(final_version, self.title_text, self.title_font, 'title')
+        background = Image.new('RGBA', size=(1536, 2726), color=self.bg_color)
+        # Maybe we should consider a blur background some other time, a plain background will do for now
+        # scrshot2 = self.screenshot_image.resize((1536, 2726), PIL.Image.ANTIALIAS)
+        # background = scrshot2.filter(ImageFilter.GaussianBlur(radius=12))
+        self.set_text(background, self.desc_text, self.desc_font, 'desc')
+        self.set_text(background, self.title_text, self.title_font, 'title')
         # ------------------
         iphone_type = ('iphone6plus' if dim > 4 else 'iphone5')
         iphone_device = Image.open("%s/devices/%s.png" % (get_script_dir(), iphone_type))
-        final_version.paste(iphone_device, (0, 0), iphone_device)
+        background.paste(iphone_device, (0, 0), iphone_device)
         if dim <= 4:
             img2 = self.screenshot_image.resize((1135, 1800), PIL.Image.ANTIALIAS)
-            final_version.paste(img2, (200, 920))
+            background.paste(img2, (200, 920))
         else:
             img2 = self.screenshot_image.resize((1147, 1906), PIL.Image.ANTIALIAS)
-            final_version.paste(img2, (190, 820))
+            background.paste(img2, (190, 820))
         if not os.path.isdir(OUTPUT_DIR):
             os.mkdir(OUTPUT_DIR)
         destination_dir = OUTPUT_DIR + '/%s' % dim
         if not os.path.isdir(destination_dir):
             os.mkdir(destination_dir)
-        final_version = final_version.resize((width, height), PIL.Image.ANTIALIAS)
+        background = background.resize((width, height), PIL.Image.ANTIALIAS)
         valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
         file_name = ''.join(c for c in self.title_text if c in valid_chars)
-        final_version.convert('RGB').save("%s/%s.jpg" % (destination_dir, file_name))
+        background.convert('RGB').save("%s/%s.jpg" % (destination_dir, file_name))
 
     def set_text(self, blurred_image, text, font, text_type):
         MAX_W, MAX_H = blurred_image.size
@@ -117,7 +130,7 @@ class FrameScreenshots:
 
 
 def main():
-    desc = 'AppFramer helps to reduce the pain of putting your app screenshots in the various device frames'
+    desc = 'AppFramer helps to put your app screenshots in beautiful device frames with annotations by running a simple command.'
     parser = argparse.ArgumentParser(prog='appframer', description=desc)
     parser.add_argument('-i', '--input', type=str, help='Pass the input screens.json file location', required=True)
     # TODO - allow the user to specify output directory
@@ -127,8 +140,10 @@ def main():
     print("------------------------------------------")
     if 'screens' in data and isinstance(data['screens'], list):
         for screen in data['screens']:
+            print screen['background_color']
             framedshot = FrameScreenshots(screen['file_path'], screen['title'], screen['description'],
-                                          screen['title_color'], screen['description_color'])
+                                          screen['title_color'], screen['description_color'],
+                                          screen['background_color'])
             framedshot.generate()
         print("------------------------------------------")
         print("Screenshots device frame processing complete...")
