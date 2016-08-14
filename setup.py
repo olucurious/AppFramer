@@ -3,7 +3,7 @@ import sys, os
 
 __url__ = 'https://github.com/olucurious/AppFramer'
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 if sys.argv[-1] == 'publish':
     os.system("git tag -a %s -m 'v%s'" % (__version__, __version__))
