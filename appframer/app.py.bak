@@ -75,7 +75,7 @@ class FrameScreenshots:
             color_list = color_string.strip('()').replace(' ', '').split(',')
             return int(color_list[0]), int(color_list[1]), int(color_list[2])
         else:
-            print(color_string)
+            print color_string
             return color_string
 
     def generate(self):
@@ -85,9 +85,9 @@ class FrameScreenshots:
         screen_sizes[4.7] = (750, 1334)
         screen_sizes[5.5] = (1242, 2208)
         for iphone in screen_sizes:
-            print(("Now processing '%s' screen for %s inches" % (self.title_text, iphone)))
+            print("Now processing '%s' screen for %s inches" % (self.title_text, iphone))
             self.process_iphone(iphone, screen_sizes[iphone][0], screen_sizes[iphone][1])
-        print(("Done with '%s' screen" % self.title_text))
+        print("Done with '%s' screen" % self.title_text)
         print("------------------------------------------")
 
     def process_iphone(self, dim, width, height):
@@ -140,14 +140,14 @@ def main():
     print("------------------------------------------")
     if 'screens' in data and isinstance(data['screens'], list):
         for screen in data['screens']:
-            print(screen['background_color'])
+            print screen['background_color']
             framedshot = FrameScreenshots(screen['file_path'], screen['title'], screen['description'],
                                           screen['title_color'], screen['description_color'],
                                           screen['background_color'])
             framedshot.generate()
         print("------------------------------------------")
         print("Screenshots device frame processing complete...")
-        print(("Get the output at %s" % OUTPUT_DIR))
+        print("Get the output at %s" % OUTPUT_DIR)
     else:
-        print(("Invalid input format in %s json file" % args['input']))
+        print("Invalid input format in %s json file" % args['input'])
     sys.exit()
