@@ -85,9 +85,9 @@ class FrameScreenshots:
         screen_sizes[4.7] = (750, 1334)
         screen_sizes[5.5] = (1242, 2208)
         for iphone in screen_sizes:
-            print(("Now processing '%s' screen for %s inches" % (self.title_text, iphone)))
+            print("Now processing '%s' screen for %s inches" % (self.title_text, iphone))
             self.process_iphone(iphone, screen_sizes[iphone][0], screen_sizes[iphone][1])
-        print(("Done with '%s' screen" % self.title_text))
+        print("Done with '%s' screen" % self.title_text)
         print("------------------------------------------")
 
     def process_iphone(self, dim, width, height):
@@ -147,7 +147,7 @@ def main():
             framedshot.generate()
         print("------------------------------------------")
         print("Screenshots device frame processing complete...")
-        print(("Get the output at %s" % OUTPUT_DIR))
+        print("Get the output at %s" % OUTPUT_DIR)
     else:
-        print(("Invalid input format in %s json file" % args['input']))
+        print("Invalid input format in %s json file" % args['input'])
     sys.exit()
