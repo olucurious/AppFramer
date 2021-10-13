@@ -23,18 +23,18 @@ pip install git+https://github.com/olucurious/AppFramer.git
 $ appframer -i /path/to/screens.json
 ```
 
-##Options
+## Options
 `appframer [-h] -i INPUT`
 
 	-h --help				show help message and exit
 	-i --input				path to data.json file that describes the screenshots to put in device frame
 
-###Example
+### Example
 ```sh
 $ appframer -i /path/to/screens.json
 ```
 
-###After
+### After
 ```
 FramedAppScreens - 03-08-2016 AT 18.40
 Using splash.jpg, timeline.jpg and profile.jpg as examples of screenshots listed in screens.json
@@ -62,7 +62,7 @@ The generated output folder will look like this:
 
 ```
 
-###screens.json example
+### screens.json example
 ```
 Screens.json is obviously a json file format
 For iOS, take the screenshots you want to use on iPhone6s preferably because of the high resolution
